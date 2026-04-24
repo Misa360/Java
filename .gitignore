@@ -1,0 +1,5 @@
+echo chrome_profile/ > .gitignore
+echo target/ >> .gitignore
+echo .vscode/ >> .gitignore
+echo *.log >> .gitignore
+echo *.class >> .gitignore
