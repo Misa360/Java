@@ -28,4 +28,23 @@ public class CodeforcesApiClient {
         }
         return json.getJSONArray("result");
     }
+    public JSONObject getUserInfo(String handle) {
+        try {
+            String apiUrl = "https://codeforces.com/api/user.info?handles=" + handle;
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder().uri(URI.create(apiUrl)).build();
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+            String body = response.body();
+            if (body != null && body.startsWith("{")) {
+                JSONObject json = new JSONObject(body);
+                if (json.optString("status").equals("OK")) {
+                    return json.getJSONArray("result").getJSONObject(0);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

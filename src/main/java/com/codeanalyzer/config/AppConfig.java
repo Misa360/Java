@@ -11,7 +11,7 @@ public class AppConfig {
         try {
             props.load(new FileInputStream("src/main/resources/config.properties"));
         } catch (IOException e) {
-            System.err.println("⚠️ Không tìm thấy config.properties, sử dụng mặc định.");
+            // Không tìm thấy file, sử dụng mặc định (im lặng)
         }
     }
 
